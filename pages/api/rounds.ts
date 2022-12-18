@@ -7,11 +7,9 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-    db.connect(mongoUri);
+    await db.connect(mongoUri);
 
     const rounds = await Round.find().lean();
-
-    db.disconnect();
 
     return res.status(200).send(rounds);
 }

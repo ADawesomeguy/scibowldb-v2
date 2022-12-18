@@ -21,14 +21,13 @@ export const authOptions = {
     callbacks: {
         // @ts-ignore
         async signIn({ user, account, profile, email, credentials }) {
-            db.connect(mongoUri);
+            await db.connect(mongoUri);
             if (await User.countDocuments({ _id: user.email }) > 0) return true;
             const userToSave = new User({
                 _id: user.email,
                 role: "USER",
             });
             userToSave.save();
-            db.disconnect();
             return true
         },
     },
