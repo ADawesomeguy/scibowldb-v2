@@ -2,6 +2,7 @@ import mongoose from 'mongoose';
 import log from './log';
 
 export async function connect(mongoUri: string) {
+	mongoose.set('strictQuery', false);
 	mongoose
 		.connect(mongoUri)
 		.then(() => log({ logger: 'db', content: `Connected to the database at ${mongoUri}!`, level: 'info' }))
