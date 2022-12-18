@@ -14,7 +14,6 @@ export default async function handler(
     res: NextApiResponse
 ) {
     if (req.method != 'POST') return res.status(405);
-    console.log({thing: req.rawHeaders});
     const token = await getToken({ req });
     if (!token) return res.status(401).send("You must be signed in to upload a round");
 
@@ -33,7 +32,7 @@ export default async function handler(
     // @ts-ignore
     fData.append('file', fs.createReadStream(body.files.file[0].path), 'file');
 
-    const axiosRes = await axios.post(parserPath, fData);
+    const axiosRes = await axios.post(parserPath, fData, { headers: { "Accept-Encoding": "gzip,deflate,compress" } });
     const round = axiosRes.data;
 
     let questions = [];
