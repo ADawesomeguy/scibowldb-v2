@@ -21,7 +21,9 @@ export const authOptions = {
     callbacks: {
         // @ts-ignore
         async signIn({ user, account, profile, email, credentials }) {
+            console.time('connect');
             db.connect(mongoUri);
+            console.timeEnd('connect');
             if (await User.countDocuments({ _id: user.email }) > 0) return true;
             const userToSave = new User({
                 _id: user.email,
@@ -29,7 +31,7 @@ export const authOptions = {
             });
             userToSave.save();
             db.disconnect();
-            return true
+            return true;
         },
     },
 }
