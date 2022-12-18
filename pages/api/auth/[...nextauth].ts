@@ -1,6 +1,8 @@
 import NextAuth from "next-auth"
 import GithubProvider from "next-auth/providers/github"
-import { githubId, githubSecret } from "../../../util/env"
+import { githubId, githubSecret, mongoUri } from "../../../util/env"
+import * as db from '../../../util/db'
+import User from "../../../models/user"
 
 export const authOptions = {
     // Configure one or more authentication providers
@@ -11,6 +13,20 @@ export const authOptions = {
         }),
         // ...add more providers here
     ],
+    callbacks: {
+        // @ts-ignore
+        async signIn({ user, account, profile, email, credentials }) {
+            db.connect(mongoUri);
+            if (await User.countDocuments({ _id: user.email }) > 0) return true;
+            const userToSave = new User({
+                _id: user.email,
+                role: "USER",
+            });
+            userToSave.save();
+            return true
+        },
+    },
 }
 
+// @ts-ignore
 export default NextAuth(authOptions)

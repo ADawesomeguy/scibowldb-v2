@@ -1,15 +1,15 @@
-enum QuestionType {
+export enum QuestionType {
     TOSS_UP,
     BONUS,
 }
 
-enum QuestionFormat {
+export enum QuestionFormat {
     MULTIPLE_CHOICE,
     SHORT_ANSWER,
 }
 
 // todo: figure out custom topics
-enum QuestionCategory {
+export enum QuestionCategory {
     ASTRONOMY,
     BIOLOGY,
     CHEMISTRY,
@@ -20,6 +20,7 @@ enum QuestionCategory {
     GENERAL_SCIENCE,
     MATH,
     PHYSICS,
+    OTHER
 }
 
 export type Question = {
@@ -28,8 +29,8 @@ export type Question = {
     category: QuestionCategory,
     question: String, // todo: maybe figure out how to do choices separately
     answer: String,
-    tossUp: Question, // points to the corresponding toss-up or this
-    bonus: Question, // points to the corresponding bonus or this
+    tossUp: Question | null, // points to the corresponding toss-up or this
+    bonus: Question | null, // points to the corresponding bonus or this
     submitter: String,
     source: String
 };

@@ -19,8 +19,12 @@ export const userSchema = new mongoose.Schema({
         type: String, // email/user from GitHub
         required: true
     },
-    role: Role,
-    status: Status,
+    role: {
+        type: String,
+        enum: ['ADMIN', 'MODERATOR', 'USER'],
+        required: true
+    },
+    // status: Status,
     // rounds will have a prop or two that will equal this id
     // e.g. creator/submitter
 });

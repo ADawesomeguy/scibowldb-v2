@@ -14,7 +14,7 @@ export default function SignInButton() {
   return (
     <>
       {/*Not signed in{" "}*/}
-      <button style={{'border': 'none', 'background': 'none'}} onClick={() => signIn("github", { callbackUrl: '/' })}>Sign in</button>
+      <button style={{'border': 'none', 'background': 'none'}} onClick={() => signIn("github", /* { callbackUrl: '/' } */)}>Sign in</button>
     </>
   )
 }

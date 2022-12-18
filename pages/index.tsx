@@ -3,10 +3,22 @@ import Image from 'next/image'
 import { Inter } from '@next/font/google'
 import styles from '../styles/Home.module.css'
 import SignInButton from '../components/signInButton'
+import { useSession } from 'next-auth/react'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+  const { data: session } = useSession()
+  let formthing = <></>;
+  if (session) {
+    formthing = <>
+      <form action='/api/uploadPDF' method='post' encType='multipart/form-data'>
+        <input id='file' name='file' type='file' />
+        <input id='source' type='text' name='source' placeholder='source' />
+        <input type='submit' />
+      </form>
+    </>
+  }
   return (
     <>
       <Head>
@@ -38,7 +50,7 @@ export default function Home() {
             </a>
           </div>
         </div>
-
+        {formthing}
         <div className={styles.center}>
           <Image
             className={styles.logo}
