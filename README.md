@@ -2,11 +2,17 @@
 TBD concept on a new platform for making packets, competition, as well as practicing Science Bowl.
 
 # Roadmap
-- [ ] Users
-  - [ ] Roles (moderators, admin, regular, etc.)
+- [x] Users
+  - [x] Roles (moderators, admin, regular, etc.)
   - [ ] Banning, kicking
   - [ ] Profiles
-- [ ] Packet DB
+- [x] Packet DB
+  - [x] Upload packets
+  - [x] JSON API
+  - [ ] Frontend
+    - [ ] Download as PDF
+    - [ ] Favorite
+    - [ ] Vote
 - [ ] Competition DB
 - [ ] Practice interface
   - [ ] Individual
