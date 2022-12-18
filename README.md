@@ -14,7 +14,9 @@ TBD concept on a new platform for making packets, competition, as well as practi
     - [ ] Favorite
     - [ ] Vote
 - [ ] Competition DB
+  - [ ] Discord integration
 - [ ] Practice interface
+  - [ ] Buzzer
   - [ ] Individual
   - [ ] Team
   - [ ] 1v1
