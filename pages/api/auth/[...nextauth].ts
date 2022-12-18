@@ -28,6 +28,7 @@ export const authOptions = {
                 role: "USER",
             });
             userToSave.save();
+            db.disconnect();
             return true
         },
     },

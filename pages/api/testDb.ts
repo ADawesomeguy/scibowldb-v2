@@ -9,5 +9,6 @@ export default async function handler(
 ) {
     await db.connect(mongoUri);
     const ret = await Round.find().lean();
+    db.disconnect();
     res.json(ret);
 }

@@ -76,6 +76,8 @@ export default async function handler(
     });
     await dbRound.save();
 
+    db.disconnect();
+
     res.redirect(307, '/rounds');
 }
 

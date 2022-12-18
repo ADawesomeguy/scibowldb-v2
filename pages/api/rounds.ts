@@ -10,5 +10,8 @@ export default async function handler(
     db.connect(mongoUri);
 
     const rounds = await Round.find().lean();
+
+    db.disconnect();
+
     return res.status(200).send(rounds);
 }

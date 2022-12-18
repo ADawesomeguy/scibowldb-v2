@@ -9,3 +9,7 @@ export async function connect(mongoUri: string) {
 		.catch(err => log({ logger: 'db', content: `Failed to connect to the database at ${mongoUri}: ${err}`, level: 'fatal' }));
 }
 
+export async function disconnect() {
+	mongoose.disconnect();
+}
+
