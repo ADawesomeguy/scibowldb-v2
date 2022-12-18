@@ -1,6 +1,7 @@
 import NextAuth from "next-auth"
 import GithubProvider from "next-auth/providers/github"
-import { githubId, githubSecret, mongoUri } from "../../../util/env"
+import DiscordProvider from "next-auth/providers/discord"
+import { githubId, githubSecret, discordId, discordSecret, mongoUri } from "../../../util/env"
 import * as db from '../../../util/db'
 import User from "../../../models/user"
 
@@ -11,6 +12,10 @@ export const authOptions = {
             clientId: githubId,
             clientSecret: githubSecret,
         }),
+        DiscordProvider({
+            clientId: discordId,
+            clientSecret: discordSecret,
+        })
         // ...add more providers here
     ],
     callbacks: {
