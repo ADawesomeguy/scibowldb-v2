@@ -10,6 +10,6 @@ export async function connect(mongoUri: string) {
 }
 
 export async function disconnect() {
-	mongoose.disconnect();
+	await mongoose.disconnect();
 }
 
