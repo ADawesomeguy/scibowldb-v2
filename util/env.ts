@@ -6,3 +6,7 @@ export const discordId = process.env.DISCORD_ID || '';
 export const discordSecret = process.env.DISCORD_SECRET || '';
 export const mongoUri = process.env.MONGO_URI || '';
 export const parserPath = process.env.PARSER_PATH || '';
+
+
+// next auth secret
+export const nextAuthSecret = process.env.NEXTAUTH_SECRET || '';

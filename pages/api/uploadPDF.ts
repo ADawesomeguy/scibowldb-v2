@@ -7,14 +7,15 @@ import fs from 'node:fs';
 import Question from '../../models/question';
 import Round from '../../models/round';
 import * as db from '../../util/db';
-import { mongoUri, parserPath } from '../../util/env';
+import {mongoUri, nextAuthSecret, parserPath} from '../../util/env';
 
 export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse
 ) {
     if (req.method != 'POST') return res.status(405);
-    const token = await getToken({ req });
+    const token = await getToken({ req: req, secret: nextAuthSecret });
+
     if (!token) return res.status(401).send("You must be signed in to upload a round");
 
     db.connect(mongoUri);
